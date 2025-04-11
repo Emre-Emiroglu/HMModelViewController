@@ -1,0 +1,23 @@
+{
+  "name": "com.codecatgames.hmmodelviewcontroller",
+  "version": "1.0.0",
+  "displayName": "HMModelViewController",
+  "description": "HMModelViewController is a ...",
+  "author": {
+    "name": "Emre Emiroglu",
+    "email": "emirogluemre08@gmail.com",
+    "url": "https://github.com/Emre-Emiroglu"
+  },
+  "keywords": [
+    "model",
+    "view",
+    "controller",
+    "mvc",
+    "pattern",
+    "unity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Emre-Emiroglu/HMModelViewController.git"
+  }
+}
