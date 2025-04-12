@@ -44,7 +44,7 @@ namespace CodeCatGames.HMModelViewController.Runtime
         /// </summary>
         /// <param name="isSubscribed">Whether to subscribe or unsubscribe the mediator.</param>
         public void SetSubscriptions(bool isSubscribed);
-        
+
         /// <summary>
         /// Registers a controller with the mediator.
         /// </summary>
