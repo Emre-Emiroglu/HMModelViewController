@@ -1,12 +1,10 @@
-﻿using UnityEngine;
-
-namespace CodeCatGames.HMModelViewController.Runtime
+﻿namespace CodeCatGames.HMModelViewController.Runtime
 {
     /// <summary>
     /// Abstract base class for a model, implementing the IModel interface.
     /// </summary>
-    /// <typeparam name="TSettings">The type of settings associated with the model. Must be a ScriptableObject.</typeparam>
-    public abstract class Model<TSettings> : IModel<TSettings> where TSettings : ScriptableObject
+    /// <typeparam name="TSettings">The type of settings associated with the model. Must be a class.</typeparam>
+    public abstract class Model<TSettings> : IModel<TSettings> where TSettings : class
     {
         #region Getters
         /// <summary>
@@ -17,19 +15,10 @@ namespace CodeCatGames.HMModelViewController.Runtime
         
         #region Constructor
         /// <summary>
-        /// Initializes a new instance of the model with a specified resource path for settings.
+        /// Initializes a new instance of the model with the specified settings.
         /// </summary>
-        /// <param name="resourcePath">The path to the resource that contains the model's settings.</param>
-        public Model(string resourcePath)
-        {
-            if (resourcePath == string.Empty)
-            {
-                Debug.Log("Resource path can not be null for getting model settings!");
-                return;
-            }
-
-            Settings = Resources.Load<TSettings>(resourcePath);
-        }
+        /// <param name="settings">The settings associated with the model.</param>
+        public Model(TSettings settings) => Settings = settings;
         #endregion
         
         #region Executes

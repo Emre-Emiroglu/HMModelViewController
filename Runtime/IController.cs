@@ -6,12 +6,12 @@ namespace CodeCatGames.HMModelViewController.Runtime
     /// Represents a controller interface responsible for executing actions with the model, view, and mediator.
     /// </summary>
     /// <typeparam name="TModel">The type of the model. Must implement the IModel interface.</typeparam>
-    /// <typeparam name="TSettings">The type of settings associated with the model. Must be a ScriptableObject.</typeparam>
+    /// <typeparam name="TSettings">The type of settings associated with the model. Must be a class.</typeparam>
     /// <typeparam name="TView">The type of the view. Must implement the IView interface.</typeparam>
     /// <typeparam name="TMediator">The type of the mediator. Must implement the IMediator interface.</typeparam>
     public interface IController<out TModel, TSettings, out TView, out TMediator>
         where TModel : IModel<TSettings>
-        where TSettings : ScriptableObject
+        where TSettings : class
         where TView : IView
         where TMediator : IMediator<TModel, TSettings, TView>
     {

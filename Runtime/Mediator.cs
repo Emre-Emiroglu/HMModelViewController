@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
 namespace CodeCatGames.HMModelViewController.Runtime
 {
@@ -7,11 +6,11 @@ namespace CodeCatGames.HMModelViewController.Runtime
     /// Abstract base class for a mediator, implementing the IMediator interface.
     /// </summary>
     /// <typeparam name="TModel">The type of the model. Must implement the IModel interface.</typeparam>
-    /// <typeparam name="TSettings">The type of settings associated with the model. Must be a ScriptableObject.</typeparam>
+    /// <typeparam name="TSettings">The type of settings associated with the model. Must be a class.</typeparam>
     /// <typeparam name="TView">The type of the view. Must implement the IView interface.</typeparam>
     public abstract class Mediator<TModel, TSettings, TView> : IMediator<TModel, TSettings, TView>
         where TModel : IModel<TSettings>
-        where TSettings : ScriptableObject
+        where TSettings : class
         where TView : IView
     {
         #region Getters

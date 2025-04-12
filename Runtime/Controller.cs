@@ -1,18 +1,16 @@
-﻿using UnityEngine;
-
-namespace CodeCatGames.HMModelViewController.Runtime
+﻿namespace CodeCatGames.HMModelViewController.Runtime
 {
     /// <summary>
     /// Abstract base class for a controller, implementing the IController interface.
     /// </summary>
     /// <typeparam name="TModel">The type of the model. Must implement the IModel interface.</typeparam>
-    /// <typeparam name="TSettings">The type of settings associated with the model. Must be a ScriptableObject.</typeparam>
+    /// <typeparam name="TSettings">The type of settings associated with the model. Must be a class.</typeparam>
     /// <typeparam name="TView">The type of the view. Must implement the IView interface.</typeparam>
     /// <typeparam name="TMediator">The type of the mediator. Must implement the IMediator interface.</typeparam>
     public abstract class
         Controller<TModel, TSettings, TView, TMediator> : IController<TModel, TSettings, TView, TMediator>
         where TModel : IModel<TSettings>
-        where TSettings : ScriptableObject
+        where TSettings : class
         where TView : IView
         where TMediator : IMediator<TModel, TSettings, TView>
     {
