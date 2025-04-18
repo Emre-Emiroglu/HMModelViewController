@@ -1,10 +1,10 @@
 # HMModelViewController
-HMModelViewController provides a Model-View-Controller (MVC) architecture for Unity and applies the Mediator pattern to ensure that View classes only handle visual functions. It offers a modular structure through generic interfaces, enhancing code maintainability and flexibility.
+HMModelViewController provides a Model-View-Controller (MVC) architecture for Unity, enhanced with a Mediator pattern to decouple views from logic and state management. The package encourages clean separation of responsibilities and modularity through generic interfaces.
 
 ## Features
 HMModelViewController includes the following key features:
-* MVC Architecture: Provides a clear separation of concerns with Model, View, and Controller layers.
-* Mediator Pattern: Ensures that View classes focus on visual functionality only by delegating communication to a Mediator.
+* MVC Architecture: Clear separation between data (Model), UI (View), and logic (Controller).
+* Mediator Pattern: Views stay purely visual while Mediators handle signals and controller orchestration.
 * Modular Design: Uses generic interfaces for easy extendability and reusability.
 
 ## Getting Started
@@ -36,15 +36,8 @@ This project is developed using Unity version 6000.0.42f1.
     ```csharp
     public class MyView : View
     {
-        public override void Show()
-        {
-             base.Show();
-        }
-        
-        public override void Hide()
-        {
-             base.Hide();
-        }
+        public override void Show() => base.Show();
+        public override void Hide() => base.Hide();
     }
     ```
 
@@ -60,18 +53,18 @@ This project is developed using Unity version 6000.0.42f1.
 
 * Controller: Implement a controller to manage the flow between the model and view and execute an algorithm.
     ```csharp
-    private class MyControllerOne : Controller<MyModel, MySettings, MyView, MyMediator>
+    private class MyControllerOne : Controller<MyModel, MySettings, MyView>
     {
-        public MyControllerOne(MyModel model, MyView view, MyMediator mediator) : base(model, view, mediator) { }
+        public MyControllerOne(MyModel model, MyView view) : base(model, view) { }
         
-        public override void Execute() { }
+        public override void Execute(params object[] parameters) { }
     }
     
-    private class MyControllerTwo : Controller<MyModel, MySettings, MyView, MyMediator>
+    private class MyControllerTwo : Controller<MyModel, MySettings, MyView>
     {
-        public MyControllerTwo(MyModel model, MyView view, MyMediator mediator) : base(model, view, mediator) { }
+        public MyControllerTwo(MyModel model, MyView view) : base(model, view) { }
         
-        public override void Execute() { }
+        public override void Execute(params object[] parameters) { }
     }
     ```
 
@@ -93,13 +86,11 @@ This project is developed using Unity version 6000.0.42f1.
         public void Hide();
     }
     
-    public interface IMediator<TModel, TSettings, TView>
+    public interface IMediator<out TModel, TSettings, out TView>
         where TModel : IModel<TSettings>
         where TSettings : class
         where TView : IView
     {
-        public List<IController<TModel, TSettings, TView, IMediator<TModel, TSettings, TView>>> Controllers { get; }
-        
         public TModel Model { get; }
          
         public TView View { get; }
@@ -109,21 +100,16 @@ This project is developed using Unity version 6000.0.42f1.
         public void Dispose();
         
         public void SetSubscriptions(bool isSubscribed);
-        
-        public void RegisterController(IController<TModel, TSettings, TView, IMediator<TModel, TSettings, TView>> controller);
     }
     
-    public interface IController<out TModel, TSettings, out TView, out TMediator>
+    public interface IController<out TModel, TSettings, out TView>
         where TModel : IModel<TSettings>
         where TSettings : class
         where TView : IView
-        where TMediator : IMediator<TModel, TSettings, TView>
     {
         public TModel Model { get; }
         
         public TView View { get; }
-        
-        public TMediator Mediator { get; }
         
         public void Execute();
     }

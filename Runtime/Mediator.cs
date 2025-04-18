@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace CodeCatGames.HMModelViewController.Runtime
+﻿namespace CodeCatGames.HMModelViewController.Runtime
 {
     /// <summary>
     /// Abstract base class for a mediator, implementing the IMediator interface.
@@ -14,12 +12,6 @@ namespace CodeCatGames.HMModelViewController.Runtime
         where TView : IView
     {
         #region Getters
-        /// <summary>
-        /// Gets the list of controllers associated with the mediator.
-        /// </summary>
-        public List<IController<TModel, TSettings, TView, IMediator<TModel, TSettings, TView>>> Controllers { get; } =
-            new();
-        
         /// <summary>
         /// Gets the model associated with the mediator.
         /// </summary>
@@ -46,7 +38,7 @@ namespace CodeCatGames.HMModelViewController.Runtime
 
         #region Core
         /// <summary>
-        /// Initializes the mediator, setting up necessary subscriptions.
+        /// Initializes the mediator, setting up the necessary subscriptions.
         /// </summary>
         public virtual void Initialize() => SetSubscriptions(true);
         
@@ -60,21 +52,6 @@ namespace CodeCatGames.HMModelViewController.Runtime
         /// </summary>
         /// <param name="isSubscribed">Whether to subscribe or unsubscribe the mediator.</param>
         public abstract void SetSubscriptions(bool isSubscribed);
-        #endregion
-
-        #region Executes
-        /// <summary>
-        /// Registers a controller with the mediator.
-        /// </summary>
-        /// <param name="controller">The controller to be registered with the mediator.</param>
-        public void RegisterController(
-            IController<TModel, TSettings, TView, IMediator<TModel, TSettings, TView>> controller)
-        {
-            if (Controllers.Contains(controller))
-                return;
-
-            Controllers.Add(controller);
-        }
         #endregion
     }
 }

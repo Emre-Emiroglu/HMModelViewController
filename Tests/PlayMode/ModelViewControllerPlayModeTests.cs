@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using CodeCatGames.HMModelViewController.Runtime;
 using NUnit.Framework;
 using UnityEngine;
@@ -22,23 +23,32 @@ namespace CodeCatGames.HMModelViewController.Tests.PlayMode
         private sealed class TestView : View { }
         private sealed class TestMediator : Mediator<TestModel, TestSettings, TestView>
         {
+            public readonly List<IController<TestModel, TestSettings, TestView>> Controllers = new();
             public bool IsSubscribed;
             public TestMediator(TestModel model, TestView view) : base(model, view) => IsSubscribed = false;
             public override void SetSubscriptions(bool isSubscribed) => IsSubscribed = isSubscribed;
         }
-        private sealed class TestControllerOne : Controller<TestModel, TestSettings, TestView, TestMediator>
+        private sealed class TestControllerOne : Controller<TestModel, TestSettings, TestView>
         {
+            public readonly TestMediator Mediator;
             public bool IsExecuted;
-            public TestControllerOne(TestModel model, TestView view, TestMediator mediator) : base(model, view,
-                mediator) => IsExecuted = false;
-            public override void Execute() => IsExecuted = true;
+            public TestControllerOne(TestModel model, TestView view, TestMediator mediator) : base(model, view)
+            {
+                IsExecuted = false;
+                Mediator = mediator;
+            }
+            public override void Execute(params object[] parameters) => IsExecuted = true;
         }
-        private sealed class TestControllerTwo : Controller<TestModel, TestSettings, TestView, TestMediator>
+        private sealed class TestControllerTwo : Controller<TestModel, TestSettings, TestView>
         {
+            public readonly TestMediator Mediator;
             public bool IsExecuted;
-            public TestControllerTwo(TestModel model, TestView view, TestMediator mediator) : base(model, view,
-                mediator) => IsExecuted = false;
-            public override void Execute() => IsExecuted = true;
+            public TestControllerTwo(TestModel model, TestView view, TestMediator mediator) : base(model, view)
+            {
+                IsExecuted = false;
+                Mediator = mediator;
+            }
+            public override void Execute(params object[] parameters) => IsExecuted = true;
         }
 
         private TestSettings _settings;
@@ -57,6 +67,9 @@ namespace CodeCatGames.HMModelViewController.Tests.PlayMode
             _mediator = new TestMediator(_model, _view);
             _controllerOne = new TestControllerOne(_model, _view, _mediator);
             _controllerTwo = new TestControllerTwo(_model, _view, _mediator);
+            
+            _mediator.Controllers.Add(_controllerOne);
+            _mediator.Controllers.Add(_controllerTwo);
 
             yield return null;
         }

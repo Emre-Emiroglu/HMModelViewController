@@ -6,13 +6,11 @@
     /// <typeparam name="TModel">The type of the model. Must implement the IModel interface.</typeparam>
     /// <typeparam name="TSettings">The type of settings associated with the model. Must be a class.</typeparam>
     /// <typeparam name="TView">The type of the view. Must implement the IView interface.</typeparam>
-    /// <typeparam name="TMediator">The type of the mediator. Must implement the IMediator interface.</typeparam>
     public abstract class
-        Controller<TModel, TSettings, TView, TMediator> : IController<TModel, TSettings, TView, TMediator>
+        Controller<TModel, TSettings, TView> : IController<TModel, TSettings, TView>
         where TModel : IModel<TSettings>
         where TSettings : class
         where TView : IView
-        where TMediator : IMediator<TModel, TSettings, TView>
     {
         #region Getters
         /// <summary>
@@ -24,11 +22,6 @@
         /// Gets the view associated with the controller.
         /// </summary>
         public TView View { get; }
-        
-        /// <summary>
-        /// Gets the mediator associated with the controller.
-        /// </summary>
-        public TMediator Mediator { get; }
         #endregion
 
         #region Constructor
@@ -37,23 +30,20 @@
         /// </summary>
         /// <param name="model">The model associated with the controller.</param>
         /// <param name="view">The view associated with the controller.</param>
-        /// <param name="mediator">The mediator associated with the controller.</param>
-        public Controller(TModel model, TView view, TMediator mediator)
+        public Controller(TModel model, TView view)
         {
             Model = model;
             View = view;
-            Mediator = mediator;
-
-            mediator.RegisterController(
-                this as IController<TModel, TSettings, TView, IMediator<TModel, TSettings, TView>>);
         }
         #endregion
 
         #region Executes
         /// <summary>
-        /// Executes the controller's actions. This method must be implemented in derived classes.
+        /// Executes the controller's actions with the provided parameters. This method must be implemented in derived classes.
+        /// The parameters can vary based on the controller's logic and needs.
         /// </summary>
-        public abstract void Execute();
+        /// <param name="parameters">The parameters to be passed to the controller's action execution. These can be of any type.</param>
+        public abstract void Execute(params object[] parameters);
         #endregion
     }
 }
