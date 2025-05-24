@@ -1,6 +1,6 @@
 {
   "name": "com.codecatgames.hmmodelviewcontroller",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "displayName": "HMModelViewController",
   "description": "HMModelViewController provides a Model-View-Controller (MVC) architecture for Unity and applies the Mediator pattern to ensure that View classes only handle visual functions. It offers a modular structure through generic interfaces.",
   "author": {
