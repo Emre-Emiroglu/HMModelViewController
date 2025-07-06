@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using CodeCatGames.HMModelViewController.Runtime;
+using HMModelViewController.Runtime;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace CodeCatGames.HMModelViewController.Tests.PlayMode
+namespace HMModelViewController.Tests.PlayMode
 {
     public sealed class ModelViewControllerPlayModeTests
     {

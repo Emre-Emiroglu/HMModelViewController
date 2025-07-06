@@ -1,4 +1,4 @@
-﻿namespace CodeCatGames.HMModelViewController.Runtime
+﻿namespace HMModelViewController.Runtime
 {
     /// <summary>
     /// Represents a view interface responsible for showing and hiding the view.

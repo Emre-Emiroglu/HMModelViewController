@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CodeCatGames.HMModelViewController.Runtime
+namespace HMModelViewController.Runtime
 {
     /// <summary>
     /// Abstract base class for a view, implementing the IView interface.

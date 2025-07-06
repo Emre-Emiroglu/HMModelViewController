@@ -1,4 +1,4 @@
-﻿namespace CodeCatGames.HMModelViewController.Runtime
+﻿namespace HMModelViewController.Runtime
 {
     /// <summary>
     /// Represents a mediator interface responsible for managing the interaction between the model and view.

@@ -1,6 +1,6 @@
 {
-    "name": "CodeCatGames.HMModelViewController.Runtime",
-    "rootNamespace": "CodeCatGames.HMModelViewController.Runtime",
+    "name": "HMModelViewController.Runtime",
+    "rootNamespace": "HMModelViewController.Runtime",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

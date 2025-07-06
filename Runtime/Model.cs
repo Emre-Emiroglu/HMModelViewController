@@ -1,4 +1,4 @@
-﻿namespace CodeCatGames.HMModelViewController.Runtime
+﻿namespace HMModelViewController.Runtime
 {
     /// <summary>
     /// Abstract base class for a model, implementing the IModel interface.

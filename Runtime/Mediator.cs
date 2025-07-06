@@ -1,4 +1,4 @@
-﻿namespace CodeCatGames.HMModelViewController.Runtime
+﻿namespace HMModelViewController.Runtime
 {
     /// <summary>
     /// Abstract base class for a mediator, implementing the IMediator interface.

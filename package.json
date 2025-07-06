@@ -1,10 +1,10 @@
 {
-  "name": "com.codecatgames.hmmodelviewcontroller",
-  "version": "1.0.2",
+  "name": "com.emreemiroglu.hmmodelviewcontroller",
+  "version": "1.0.0",
   "displayName": "HMModelViewController",
-  "description": "HMModelViewController provides a Model-View-Controller (MVC) architecture for Unity and applies the Mediator pattern to ensure that View classes only handle visual functions. It offers a modular structure through generic interfaces.",
+  "description": "HMModelViewController is a Unity MVC framework using the Mediator pattern to keep Views focused on visuals. It offers a modular, clean structure through flexible and generic interfaces.",
   "author": {
-    "name": "Code Cat Games",
+    "name": "Emre Emiroglu",
     "email": "emirogluemre08@gmail.com",
     "url": "https://github.com/Emre-Emiroglu"
   },

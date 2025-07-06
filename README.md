@@ -1,3 +1,5 @@
+<img src="icon.jpg" width="512" height="512" alt="HMModelViewController Logo">
+
 # HMModelViewController
 HMModelViewController provides a Model-View-Controller (MVC) architecture for Unity, enhanced with a Mediator pattern to decouple views from logic and state management. The package encourages clean separation of responsibilities and modularity through generic interfaces.
 

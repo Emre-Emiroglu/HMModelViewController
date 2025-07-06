@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using CodeCatGames.HMModelViewController.Runtime;
+using HMModelViewController.Runtime;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace CodeCatGames.HMModelViewController.Tests.EditMode
+namespace HMModelViewController.Tests.EditMode
 {
     public sealed class ModelViewControllerEditModeTests
     {
